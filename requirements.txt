@@ -1,0 +1,20 @@
+# IIVA Requirements
+
+# Core dependencies
+python>=3.10
+textual>=0.40.0  # For TUI
+pyyaml>=6.0      # For YAML parsing
+requests>=2.28   # For API requests
+google-api-python-client>=2.70  # For Google services
+google-auth-oauthlib>=0.8      # For Google authentication
+
+# For file operations
+pathlib
+os
+datetime
+re
+
+# For AI integration (optional - choose one or more)
+openai>=1.0      # For OpenAI API
+anthropic>=0.5   # For Anthropic API
+ollama>=0.1      # For local Ollama models
