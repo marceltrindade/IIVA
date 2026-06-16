@@ -2,11 +2,14 @@ import sqlite3
 import yaml
 import os
 import glob
+from dotenv import load_dotenv
 import re
 
-caminho_alunos = "/mnt/almox/JD/20-29 Work/IIVA-classes/21.01 Alunos/"
+load_dotenv()
+caminho_alunos = os.getenv("VAULT_ALUNOS", "/mnt/almox/JD/20-29 Work/IIVA-classes/21.01 Alunos/")
+DB_PATH = os.getenv("DB_PATH", "iiva.db")
 
-conn = sqlite3.connect("iiva.db")
+conn = sqlite3.connect(DB_PATH)
 cursor = conn.cursor()
 
 #Mapear nome do aluno -> id no banco

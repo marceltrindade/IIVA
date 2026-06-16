@@ -1,10 +1,15 @@
 from fastapi import FastAPI
 import sqlite3
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+DB_PATH = os.getenv("DB_PATH", "iiva.db")
 
 app = FastAPI(title="IIVA - Idioma Independente Virtual Assistant")
 
 def get_db():
-    conn = sqlite3.connect("iiva.db")
+    conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -20,14 +25,20 @@ def listar_alunos():
     return [dict(a) for a in alunos]
 
 @app.get("/aulas")
-def listar_aulas(status: str = None):
+def listar_aulas(status: str = None, data: str = None):
     conn = get_db()
+    query = "SELECT * FROM aulas WHERE 1=1"
+    params = []
+    
     if status:
-        aulas = conn.execute(
-            "SELECT * FROM aulas WHERE status = ? ORDER BY data DESC", (status,)
-        ).fetchall()
-    else:
-        aulas = conn.execute("SELECT * FROM aulas ORDER BY data DESC").fetchall()
+        query += " AND status = ?"
+        params.append(status)
+    if data:
+        query += " AND data = ?"
+        params.append(data)
+    
+    query += " ORDER BY data DESC"
+    aulas = conn.execute(query, params).fetchall()
     
     conn.close()
     return [dict(a) for a in aulas]
