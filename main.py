@@ -27,7 +27,11 @@ def listar_alunos():
 @app.get("/aulas")
 def listar_aulas(status: str = None, data: str = None):
     conn = get_db()
-    query = "SELECT * FROM aulas WHERE 1=1"
+    query = """SELECT aulas.*, alunos.nome AS aluno_nome
+               FROM aulas
+               JOIN alunos ON aulas.aluno_id = alunos.id
+               WHERE 1=1"""
+
     params = []
     
     if status:
