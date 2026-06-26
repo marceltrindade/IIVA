@@ -19,3 +19,30 @@ rotear();
 
 // Roteia quando o hash muda
 window.addEventListener("hashchange", rotear);
+
+function carregarAulasHoje() {
+  let hoje = new Date().toISOString().split("T")[0];
+  fetch("http://localhost:8000/aulas?data=" + hoje)
+    .then(function (resposta) {
+      return resposta.json();
+    })
+    .then(function (aulas) {
+      document.querySelector(
+        "#stats .badge:nth-child(1) .badge-num",
+      ).textContent = aulas.length;
+    });
+}
+
+function carregarAlunosAtivos() {
+  fetch("http://localhost:8000/alunos")
+    .then(function (resposta) {
+      return resposta.json();
+    })
+    .then(function (alunos) {
+      document.querySelector(
+        "#stats .badge:nth-child(2) .badge-num",
+      ).textContent = alunos.length;
+    });
+}
+carregarAulasHoje();
+carregarAlunosAtivos();
