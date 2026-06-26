@@ -67,7 +67,44 @@ function carregarAlunosAtivos() {
     });
 }
 
+function carregarListaAlunos() {
+  fetch("http://localhost:8000/alunos")
+    .then(function (resposta) {
+      return resposta.json();
+    })
+    .then(function (alunos) {
+      let container = document.getElementById("lista-alunos");
+      container.innerHTML = "";
+
+      for (let i = 0; i < alunos.length; i++) {
+        let aluno = alunos[i];
+
+        let item = document.createElement("div");
+        item.className = "aluno-item";
+        item.setAttribute("data-id", aluno.id);
+
+        item.innerHTML =
+          "<span class='aluno-nome'>" +
+          aluno.nome +
+          "</span>" +
+          "<span class='aluno-nível'>" +
+          aluno.nível +
+          "</span>" +
+          "<span class='aluno-status'>" +
+          aluno.status +
+          "</span>";
+
+        item.addEventListener("click", function () {
+          window.location.hash = "aluno/" + aluno.id;
+        });
+
+        container.appendChild(item);
+      }
+    });
+}
+
 // TODO: badge logs pendentes - blocker: não tem coluna log_criado
 
 carregarAulasHoje();
 carregarAlunosAtivos();
+carregarListaAlunos();
