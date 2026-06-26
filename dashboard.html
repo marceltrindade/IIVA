@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>IIVA Dashboard</title>
+        <link rel="stylesheet" href="dashboard.css" />
+    </head>
+    <body>
+        <div id="view-dashboard">
+            <div id="stats">
+                <div class="badge">
+                    <span class="badge-num">0</span>
+                    <span class="badge-label">aulas hoje</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-num">0</span>
+                    <span class="badge-label">alunos ativos</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-num">0</span>
+                    <span class="badge-label">logs pendentes</span>
+                </div>
+            </div>
+            <div id="topo">
+                <button><a href="#">Alunos</a></button>
+            </div>
+            <div id="tabela">
+                <table>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Aula</th>
+                        <th>Tema</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>Andrea</td>
+                        <td>20</td>
+                        <td>Future Simple</td>
+                        <td>✅</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="detalhes">
+                <button id="fechar-detalhes">x</button>
+                <div id="conteudo-detalhes"></div>
+            </div>
+        </div>
+        <div id="view-alunos">
+            <button id="volta-dashboard"><- Voltar</button>
+            <div id="lista-alunos"></div>
+        </div>
+        <div id="view-aluno">
+            <button id="volta-alunos"><- Voltar</button>
+            <div id="perfil-aluno">
+                <h2 id="aluno-nome"></h2>
+                <span id="aluno-nivel"></span>
+                <span id="aluno-status"></span>:
+            </div>
+            <div id="nav-abas">
+                <button class="aba-ativa" data-aba="perfil">Perfil</button>
+                <button class="aba" data-aba="planos">Planos</button>
+                <button class="aba" data-aba="logs">Logs</button>
+            </div>
+            <div id="conteudo-abas">
+                <div id="aba-perfil" class="aba-conteudo"></div>
+                <div id="aba-planos" class="aba-conteudo"></div>
+                <div id="aba-logs" class="aba-conteudo"></div>
+            </div>
+        </div>
+    </body>
+</html>
