@@ -30,6 +30,28 @@ function carregarAulasHoje() {
       document.querySelector(
         "#stats .badge:nth-child(1) .badge-num",
       ).textContent = aulas.length;
+
+      let tabela = document.querySelector("#tabela table");
+      while (tabela.rows.length > 1) {
+        tabela.deleteRow(1);
+      }
+      for (let i = 0; i < aulas.length; i++) {
+        let aula = aulas[i];
+        let linha = tabela.insertRow();
+        linha.innerHTML =
+          "<td>" +
+          aula.aluno_nome +
+          "</td>" +
+          "<td>" +
+          aula.aula_numero +
+          "</td>" +
+          "<td>" +
+          aula.topico +
+          "</td>" +
+          "<td>" +
+          aula.status +
+          "</td>";
+      }
     });
 }
 
@@ -44,5 +66,8 @@ function carregarAlunosAtivos() {
       ).textContent = alunos.length;
     });
 }
+
+// TODO: badge logs pendentes - blocker: não tem coluna log_criado
+
 carregarAulasHoje();
 carregarAlunosAtivos();
