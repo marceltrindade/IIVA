@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <title>IIVA Dashboard</title>
         <link rel="stylesheet" href="dashboard.css" />
+        <script src="dashboard.js" defer></script>
     </head>
     <body>
         <div id="view-dashboard">
@@ -22,7 +23,7 @@
                 </div>
             </div>
             <div id="topo">
-                <button><a href="#">Alunos</a></button>
+                <a href="#alunos" class="btn">Alunos</a>
             </div>
             <div id="tabela">
                 <table>
@@ -46,7 +47,7 @@
             </div>
         </div>
         <div id="view-alunos">
-            <button id="volta-dashboard"><- Voltar</button>
+            <a href="#dashboard" class="btn"><- Voltar</a>
             <div id="lista-alunos"></div>
         </div>
         <div id="view-aluno">
@@ -54,7 +55,6 @@
             <div id="perfil-aluno">
                 <h2 id="aluno-nome"></h2>
                 <span id="aluno-nivel"></span>
-                <span id="aluno-status"></span>:
             </div>
             <div id="nav-abas">
                 <button class="aba-ativa" data-aba="perfil">Perfil</button>
